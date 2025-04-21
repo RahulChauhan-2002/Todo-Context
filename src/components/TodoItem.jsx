@@ -4,7 +4,7 @@ import { useTodo } from '../contexts/TodoContext';
 function TodoItem({ todo }) {
   const [isTodoEditable, setIsTodoEditable] = useState(false)
   const [todoMsg, setTodoMsg] = useState(todo.todo)
-  const {updateTodo, deleteTodo, toggleComplete} = useTodo()
+  const {updateTodo, deleteTodo, toggleTodo} = useTodo()
 
   const editTodo = () => {
     updateTodo(todo.id, {...todo, todo: todoMsg})
@@ -12,7 +12,7 @@ function TodoItem({ todo }) {
   }
   const toggleCompleted = () => {
     //console.log(todo.id);
-    toggleComplete(todo.id)
+    toggleTodo(todo.id)
   }
 
   return (
@@ -21,6 +21,14 @@ function TodoItem({ todo }) {
               todo.completed ? "bg-[#c6e9a7]" : "bg-[#ccbed7]"
           }`}
       >
+
+        {/* ✅ Checkbox to toggle completion */}
+        <input
+            type="checkbox"
+            checked={todo.completed}
+            onChange={toggleCompleted}
+            className="cursor-pointer w-5 h-5 self-center"
+        />
         <input
               type="text"
               className={`border outline-none w-full bg-transparent rounded-lg ${

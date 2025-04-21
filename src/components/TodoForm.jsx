@@ -7,9 +7,9 @@ const TodoForm = () => {
     const {addTodo}=useTodo()
 
     const add=(e)=>{
-        e.prevantDefault();
+        e.preventDefault();
         if(!Todo) return 
-        addTodo({id:Date.now(), todo:Todo, comleted:false})
+        addTodo({id:Date.now(), todo:Todo, completed:false})
         setTodo("");
     }
 

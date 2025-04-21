@@ -2,6 +2,7 @@ import {TodoProvider} from './contexts/TodoContext'
 import { useState, useEffect } from 'react'
 import './App.css'
 import TodoForm from './components/TodoForm'
+import TodoItem from './components/TodoItem'
 
 function App() {
   const [todos, settodos] = useState([])
@@ -72,6 +73,13 @@ function App() {
             </div>
             <div className='flex flex-wrap gap-y-3'>
               {/* display todos */}
+              {todos.map((todo) => (
+                          <div key={todo.id}
+                          className='w-full'
+                          >
+                            <TodoItem todo={todo} />
+                          </div>
+                        ))}
             </div>
          </div>
       </div>
